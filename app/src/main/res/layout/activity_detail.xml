@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DetailActivity">
+
+    <Button
+        android:id="@+id/btn_donation_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Donate Now"
+        android:textStyle="bold"
+        android:background="@drawable/bg_button"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_poster_detail"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:background="@drawable/bg_gradient"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_back_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_arrow_back_black_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_share_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_share_black_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_favorite_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_favorite_border_black_24dp"
+        android:tint="@android:color/white"
+        app:layout_constraintRight_toLeftOf="@id/iv_share_detail"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:ellipsize="end"
+        android:maxEms="3"
+        android:maxLines="2"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_poster_detail"
+        tools:text="Help Pais to meet Zahra anak be ce, biar ga kebanyakan halu. kasian gw liat lama lama, asli dah ga boong" />
+
+    <TextView
+        android:id="@+id/tv_donation_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:maxLines="2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title_detail"
+        tools:text="Rp. 5.000,00 Funds Collected from Rp. 50.000,00" />
+
+    <TextView
+        android:id="@+id/tv_facilitator_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/vw_dummy_2"
+        app:layout_constraintLeft_toRightOf="@id/iv_facilitator_detail"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_1"
+        tools:text="By Pais Ismy" />
+
+    <View
+        android:id="@+id/vw_dummy_1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_donation_detail" />
+
+    <View
+        android:id="@+id/vw_dummy_2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_facilitator_detail" />
+
+    <View
+        android:id="@+id/vw_dummy_3"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@id/vw_dummy_2"
+        app:layout_constraintRight_toLeftOf="@id/ll_dummy_1"
+        app:layout_constraintLeft_toRightOf="@id/tv_facilitator_detail"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_1" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_facilitator_detail"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_1"
+        tools:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/ll_dummy_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/vw_dummy_2"
+        app:layout_constraintLeft_toRightOf="@id/vw_dummy_3"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_1"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_supervisor_account_black_24dp"
+            android:tint="@android:color/darker_gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="145"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="2dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_dummy_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/vw_dummy_2"
+        app:layout_constraintLeft_toRightOf="@id/ll_dummy_1"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_1"
+        android:layout_marginLeft="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_access_time_black_24dp"
+            android:tint="@android:color/darker_gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="14 Days left"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="2dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:text="@string/lorem_text"
+        app:layout_constraintTop_toBottomOf="@id/vw_dummy_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_donation_detail"
+        android:layout_margin="16dp"
+        android:maxLines="4"
+        android:ellipsize="end"
+        android:maxEms="3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    android:layout_marginRight="10dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/iv_poster_item"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_circle_button"
+            android:padding="8dp"
+            android:src="@drawable/ic_favorite_border_black_24dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:ellipsize="end"
+            android:maxEms="3"
+            android:maxLines="2"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_category_item"
+            tools:text="Bantu Faiz menemukan cinta sejatinya yang bernama ZAHRA" />
+
+        <TextView
+            android:id="@+id/tv_category_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_text_category"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:textSize="14sp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/colorAccentDark"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAllCaps="true"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster_item"
+            tools:text="Social" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

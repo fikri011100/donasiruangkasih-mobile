@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_menu"
+        android:title="Home"
+        android:icon="@drawable/ic_home_black_24dp"/>
+
+    <item
+        android:id="@+id/add_menu"
+        android:title="Add Donation"
+        android:icon="@drawable/ic_add_circle_black_24dp"/>
+
+    <item
+        android:id="@+id/help_menu"
+        android:title="Help"
+        android:icon="@drawable/ic_help_black_24dp"/>
+
+    <item
+        android:id="@+id/profile_menu"
+        android:title="Profile"
+        android:icon="@drawable/ic_account_circle_black_24dp"/>
+
+</menu>

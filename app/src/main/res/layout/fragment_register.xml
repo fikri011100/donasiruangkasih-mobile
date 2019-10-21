@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".fragment.RegisterFragment">
+
+    <Button
+        android:id="@+id/btn_do_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_button"
+        android:textColor="@android:color/white"
+        android:text="Sign Up"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password_confirm_register" />
+
+    <EditText
+        android:id="@+id/et_email_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:background="@drawable/bg_edit_text"
+        android:padding="10dp"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_password_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:background="@drawable/bg_edit_text"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_email_register" />
+
+    <EditText
+        android:id="@+id/et_password_confirm_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="password confirmation"
+        android:inputType="textPassword"
+        android:background="@drawable/bg_edit_text"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_password_register" />
+
+    <EditText
+        android:id="@+id/et_name_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="full name"
+        android:background="@drawable/bg_edit_text"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@id/et_email_register"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_logo_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/et_name_register"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_do_register">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already have account? " />
+
+        <TextView
+            android:id="@+id/tv_login_register"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sign In"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".activity.MainmenuActivity">
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_dummy_1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="10dp"-->
+<!--        android:text="Ruang Kasih App"-->
+<!--        android:textColor="@android:color/black"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <FrameLayout
+        android:id="@+id/container_mainmenu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/nav_bottom_mainmenu"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bottom_mainmenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@drawable/cl_state_bottom_nav"
+        app:itemTextColor="@drawable/cl_state_bottom_nav"
+        tools:ignore="MissingConstraints"
+        app:menu="@menu/menu_navigation_bottom"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
