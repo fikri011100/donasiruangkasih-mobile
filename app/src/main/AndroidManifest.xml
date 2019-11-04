@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.titi.mj">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,11 +10,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.DetailActivity"></activity>
-        <activity android:name=".activity.MainmenuActivity"/>
-        <activity android:name=".activity.MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.SubdetailActivity"
+            android:parentActivityName=".activity.MainActivity"/>
+        <activity android:name=".activity.DetailActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.CoverActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

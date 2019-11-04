@@ -1,19 +1,18 @@
 package com.titi.mj.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
 public class DonationResponse {
+
     @Expose
     @SerializedName("message")
-    private String message;
-
-
-//    @Expose
-//    @SerializedName("message")
-//    public String message;
+    public String message;
     @Expose
     @SerializedName("data")
     public List<Data> data;
@@ -21,31 +20,7 @@ public class DonationResponse {
     @SerializedName("success")
     public boolean success;
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public List<Data> getData() {
-        return data;
-    }
-
-    public void setData(List<Data> data) {
-        this.data = data;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
-    public static class Data {
+    public static class Data implements Parcelable {
         @Expose
         @SerializedName("categories")
         public Categories categories;
@@ -56,8 +31,14 @@ public class DonationResponse {
         @SerializedName("users")
         public Users users;
         @Expose
+        @SerializedName("donation_total")
+        public int donationTotal;
+        @Expose
         @SerializedName("donation_received")
         public int donationReceived;
+        @Expose
+        @SerializedName("donation_description")
+        public String donationDescription;
         @Expose
         @SerializedName("donation_image")
         public String donationImage;
@@ -67,9 +48,47 @@ public class DonationResponse {
         @Expose
         @SerializedName("id")
         public int id;
+
+        protected Data(Parcel in) {
+            donationEnd = in.readString();
+            donationTotal = in.readInt();
+            donationReceived = in.readInt();
+            donationDescription = in.readString();
+            donationImage = in.readString();
+            donationTitle = in.readString();
+            id = in.readInt();
+        }
+
+        public static final Creator<Data> CREATOR = new Creator<Data>() {
+            @Override
+            public Data createFromParcel(Parcel in) {
+                return new Data(in);
+            }
+
+            @Override
+            public Data[] newArray(int size) {
+                return new Data[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(donationEnd);
+            dest.writeInt(donationTotal);
+            dest.writeInt(donationReceived);
+            dest.writeString(donationDescription);
+            dest.writeString(donationImage);
+            dest.writeString(donationTitle);
+            dest.writeInt(id);
+        }
     }
 
-    public static class Categories {
+    public static class Categories implements Parcelable{
         @Expose
         @SerializedName("name_category")
         public String nameCategory;
@@ -77,24 +96,39 @@ public class DonationResponse {
         @SerializedName("id")
         public int id;
 
-        public String getNameCategory() {
-            return nameCategory;
+        protected Categories(Parcel in) {
+            nameCategory = in.readString();
+            id = in.readInt();
         }
 
-        public void setNameCategory(String nameCategory) {
-            this.nameCategory = nameCategory;
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(nameCategory);
+            dest.writeInt(id);
         }
 
-        public int getId() {
-            return id;
+        @Override
+        public int describeContents() {
+            return 0;
         }
 
-        public void setId(int id) {
-            this.id = id;
-        }
+        public static final Creator<Categories> CREATOR = new Creator<Categories>() {
+            @Override
+            public Categories createFromParcel(Parcel in) {
+                return new Categories(in);
+            }
+
+            @Override
+            public Categories[] newArray(int size) {
+                return new Categories[size];
+            }
+        };
     }
 
-    public static class Users {
+    public static class Users implements Parcelable{
+        @Expose
+        @SerializedName("profile_photo")
+        public String profilePhoto;
         @Expose
         @SerializedName("email")
         public String email;
@@ -105,28 +139,36 @@ public class DonationResponse {
         @SerializedName("id")
         public int id;
 
-        public String getEmail() {
-            return email;
+        protected Users(Parcel in) {
+            profilePhoto = in.readString();
+            email = in.readString();
+            name = in.readString();
+            id = in.readInt();
         }
 
-        public void setEmail(String email) {
-            this.email = email;
+        public static final Creator<Users> CREATOR = new Creator<Users>() {
+            @Override
+            public Users createFromParcel(Parcel in) {
+                return new Users(in);
+            }
+
+            @Override
+            public Users[] newArray(int size) {
+                return new Users[size];
+            }
+        };
+
+        @Override
+        public int describeContents() {
+            return 0;
         }
 
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeString(profilePhoto);
+            dest.writeString(email);
+            dest.writeString(name);
+            dest.writeInt(id);
         }
     }
 }

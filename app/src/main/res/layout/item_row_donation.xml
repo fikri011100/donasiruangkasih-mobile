@@ -6,34 +6,23 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
     android:layout_marginRight="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/background"
+        android:id="@+id/background_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="10dp">
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/iv_poster_item"
             android:layout_width="0dp"
-            android:layout_height="350dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@mipmap/ic_launcher" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="16dp"
-            android:background="@drawable/bg_circle_button"
-            android:padding="8dp"
-            android:src="@drawable/ic_favorite_border_black_24dp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,8 +31,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
+            android:paddingBottom="4dp"
             android:ellipsize="end"
             android:maxEms="3"
             android:maxLines="2"
@@ -52,26 +42,56 @@
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_category_item"
+            app:layout_constraintTop_toBottomOf="@id/iv_poster_item"
             tools:text="Bantu Faiz menemukan cinta sejatinya yang bernama ZAHRA" />
 
         <TextView
-            android:id="@+id/tv_category_item"
+            android:id="@+id/tv_nominal_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_text_category"
-            android:paddingLeft="16dp"
-            android:paddingTop="8dp"
-            android:textSize="14sp"
-            android:paddingRight="16dp"
-            android:paddingBottom="8dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="12dp"
+            android:text="@string/str_nominal"
             android:textColor="@color/colorAccentDark"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:textAllCaps="true"
-            app:layout_constraintTop_toBottomOf="@id/iv_poster_item"
-            tools:text="Social" />
+            app:layout_constraintTop_toBottomOf="@id/tv_title_item" />
+
+        <TextView
+            android:id="@+id/tv_dummy_1_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="3dp"
+            android:text="@string/str_nominal_word"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_nominal_item"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_item" />
+
+        <TextView
+            android:id="@+id/tv_deadline_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:text="@string/str_deadline"
+            android:textColor="@color/colorAccentDark"
+            android:layout_marginStart="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_dummy_1_item"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_item" />
+
+        <TextView
+            android:id="@+id/tv_dummy_2_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginStart="3dp"
+            android:text="@string/str_deadline_word"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_deadline_item"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_item" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

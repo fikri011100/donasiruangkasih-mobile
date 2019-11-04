@@ -7,14 +7,14 @@
         android:icon="@drawable/ic_home_black_24dp"/>
 
     <item
-        android:id="@+id/add_menu"
-        android:title="Add Donation"
-        android:icon="@drawable/ic_add_circle_black_24dp"/>
+        android:id="@+id/my_donation_menu"
+        android:title="My Donation"
+        android:icon="@drawable/ic_folder_special_black_24dp"/>
 
     <item
-        android:id="@+id/help_menu"
-        android:title="Help"
-        android:icon="@drawable/ic_help_black_24dp"/>
+        android:id="@+id/history_menu"
+        android:title="History"
+        android:icon="@drawable/ic_history_black_24dp"/>
 
     <item
         android:id="@+id/profile_menu"

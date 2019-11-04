@@ -1,4 +1,4 @@
-package com.titi.mj.fragment;
+package com.titi.mj.fragment.cover;
 
 
 import android.content.Intent;
@@ -16,12 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.titi.mj.activity.MainmenuActivity;
+import com.titi.mj.activity.MainActivity;
 import com.titi.mj.R;
-import com.titi.mj.model.LoginResponse;
 import com.titi.mj.model.RegisterResponse;
 import com.titi.mj.model.locale.PrefModel;
 import com.titi.mj.utils.SharedPref;
@@ -37,10 +37,11 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class RegisterFragment extends Fragment {
+    private ProgressBar mLoading;
     private Button mButtonRegister;
     private SharedPref mPreference;
-    private TextView mTextLogin;
-    private EditText mEdtEmailRegister, mEdtFullnameRegister,mEdtPasswordRegister, mEdtPasswordConfirmRegister;
+    private TextView mTextLogin, mTextDummy;
+    private EditText mEdtEmailRegister, mEdtFullnameRegister,mEdtPasswordRegister, mEdtPasswordConfirmRegister, mEdtPhoneRegister;
     private String FIELD_REQUIRED = "This can't be empty";
     private String FIELD_NOT_SAME = "This password and confirmation is not same";
     private PrefModel userModel;
@@ -87,19 +88,19 @@ public class RegisterFragment extends Fragment {
 
     private void goLoginFragment() {
         Fragment mFragment = new LoginFragment();
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.container_main, mFragment);
-        transaction.commit();
+        getFragmentManager().beginTransaction().replace(R.id.container_cover, mFragment).commit();
     }
 
     void init(View view){
         mButtonRegister = view.findViewById(R.id.btn_do_register);
         mTextLogin = view.findViewById(R.id.tv_login_register);
+        mTextDummy = view.findViewById(R.id.tv_dummy_register);
         mEdtEmailRegister = view.findViewById(R.id.et_email_register);
         mEdtFullnameRegister = view.findViewById(R.id.et_name_register);
         mEdtPasswordRegister = view.findViewById(R.id.et_password_register);
         mEdtPasswordConfirmRegister = view.findViewById(R.id.et_password_confirm_register);
+        mEdtPhoneRegister = view.findViewById(R.id.et_phone_register);
+        mLoading = view.findViewById(R.id.pb_register);
     }
 
     void validate(){
@@ -107,6 +108,7 @@ public class RegisterFragment extends Fragment {
         String fullname = mEdtFullnameRegister.getText().toString().trim();
         String password = mEdtPasswordRegister.getText().toString().trim();
         String passwordConfirm = mEdtPasswordConfirmRegister.getText().toString().trim();
+        String phone = mEdtPhoneRegister.getText().toString().trim();
 
         if (TextUtils.isEmpty(email)){
             mEdtEmailRegister.setError(FIELD_REQUIRED);
@@ -117,6 +119,12 @@ public class RegisterFragment extends Fragment {
         if (TextUtils.isEmpty(fullname)){
             mEdtFullnameRegister.setError(FIELD_REQUIRED);
             mEdtFullnameRegister.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(phone)){
+            mEdtPhoneRegister.setError(FIELD_REQUIRED);
+            mEdtPhoneRegister.requestFocus();
             return;
         }
 
@@ -141,45 +149,78 @@ public class RegisterFragment extends Fragment {
             return;
         }
 
-        getResponse(email, fullname, password);
+        getResponse(email, fullname, password, phone);
 
     }
 
-    private void getResponse(String str_email, String str_fullname, String str_password) {
+    private void getResponse(final String str_email, final String str_fullname, final String str_password, final String str_phone) {
+        showLoading();
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<RegisterResponse> call = apiInterface.doRegist(str_fullname, str_email, str_password, str_password);
+        Call<RegisterResponse> call = apiInterface.doRegist(str_fullname, str_email, str_password, str_password, str_phone);
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 if (response.isSuccessful()){
 
-                    String gson_response = response.body().toString();
-                    Toast.makeText(getContext(), gson_response, Toast.LENGTH_SHORT).show();
+                    saveUser(response.body().user.id, str_email, str_password, response.body().user.name,
+                            response.body().user.phone, response.body().user.profilePhoto,
+                            response.body().user.userStatus, true);
 
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                    getActivity().finish();
+
+                }else {
+                    hideLoading();
+                    Toast.makeText(getContext(), "failed to register account", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
+                hideLoading();
                 Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
-//        startActivity(new Intent(getContext(), MainmenuActivity.class));
-//        getActivity().finish();
-//
-//        saveUser(str_email, str_password, str_fullname, true);
-
     }
 
-    private void saveUser(String email, String password, String fullname, boolean status){
+    private void saveUser(int id, String email, String password, String fullname, String phoneno, String photo, String status_user, boolean status) {
+        userModel.setId(id);
         userModel.setEmail(email);
         userModel.setPassword(password);
         userModel.setFullname(fullname);
+        userModel.setPhoneno(phoneno);
+        userModel.setPhoto(photo);
+        userModel.setStatus(status_user);
         userModel.setLoggedin(status);
 
         mPreference.setPreferences(userModel);
-        Toast.makeText(getContext(), "Data tersimpan", Toast.LENGTH_SHORT).show();
 
+    }
+
+    void showLoading(){
+        mLoading.setVisibility(View.VISIBLE);
+
+        mButtonRegister.setVisibility(View.GONE);
+        mEdtEmailRegister.setVisibility(View.GONE);
+        mEdtFullnameRegister.setVisibility(View.GONE);
+        mEdtPasswordRegister.setVisibility(View.GONE);
+        mEdtPasswordConfirmRegister.setVisibility(View.GONE);
+        mEdtPhoneRegister.setVisibility(View.GONE);
+        mTextLogin.setVisibility(View.GONE);
+        mTextDummy.setVisibility(View.GONE);
+    }
+
+    void hideLoading(){
+        mLoading.setVisibility(View.GONE);
+
+        mButtonRegister.setVisibility(View.VISIBLE);
+        mEdtEmailRegister.setVisibility(View.VISIBLE);
+        mEdtFullnameRegister.setVisibility(View.VISIBLE);
+        mEdtPasswordRegister.setVisibility(View.VISIBLE);
+        mEdtPasswordConfirmRegister.setVisibility(View.VISIBLE);
+        mEdtPhoneRegister.setVisibility(View.VISIBLE);
+        mTextLogin.setVisibility(View.VISIBLE);
+        mTextDummy.setVisibility(View.VISIBLE);
     }
 }

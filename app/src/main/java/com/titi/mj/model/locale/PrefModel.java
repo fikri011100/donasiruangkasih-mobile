@@ -4,18 +4,56 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class PrefModel implements Parcelable {
+    private boolean isLoggedin;
+    private int id;
     private String fullname;
     private String email;
     private String password;
     private String phoneno;
-    private boolean isLoggedin;
+    private String photo;
+    private String status;
 
-    public String getPhoneno() {
-        return phoneno;
+    public PrefModel(){
+
     }
 
-    public void setPhoneno(String phoneno) {
-        this.phoneno = phoneno;
+    protected PrefModel(Parcel in) {
+        isLoggedin = in.readByte() != 0;
+        id = in.readInt();
+        fullname = in.readString();
+        email = in.readString();
+        password = in.readString();
+        phoneno = in.readString();
+        photo = in.readString();
+        status = in.readString();
+    }
+
+    public static final Creator<PrefModel> CREATOR = new Creator<PrefModel>() {
+        @Override
+        public PrefModel createFromParcel(Parcel in) {
+            return new PrefModel(in);
+        }
+
+        @Override
+        public PrefModel[] newArray(int size) {
+            return new PrefModel[size];
+        }
+    };
+
+    public boolean isLoggedin() {
+        return isLoggedin;
+    }
+
+    public void setLoggedin(boolean loggedin) {
+        isLoggedin = loggedin;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFullname() {
@@ -42,14 +80,29 @@ public class PrefModel implements Parcelable {
         this.password = password;
     }
 
-    public boolean isLoggedin() {
-        return isLoggedin;
+    public String getPhoneno() {
+        return phoneno;
     }
 
-    public void setLoggedin(boolean loggedin) {
-        isLoggedin = loggedin;
+    public void setPhoneno(String phoneno) {
+        this.phoneno = phoneno;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     @Override
     public int describeContents() {
@@ -58,33 +111,13 @@ public class PrefModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.fullname);
-        dest.writeString(this.email);
-        dest.writeString(this.password);
-        dest.writeString(this.phoneno);
-        dest.writeByte(this.isLoggedin ? (byte) 1 : (byte) 0);
+        dest.writeByte((byte) (isLoggedin ? 1 : 0));
+        dest.writeInt(id);
+        dest.writeString(fullname);
+        dest.writeString(email);
+        dest.writeString(password);
+        dest.writeString(phoneno);
+        dest.writeString(photo);
+        dest.writeString(status);
     }
-
-    public PrefModel() {
-    }
-
-    private PrefModel(Parcel in) {
-        this.fullname = in.readString();
-        this.email = in.readString();
-        this.password = in.readString();
-        this.phoneno = in.readString();
-        this.isLoggedin = in.readByte() != 0;
-    }
-
-    public static final Parcelable.Creator<PrefModel> CREATOR = new Parcelable.Creator<PrefModel>() {
-        @Override
-        public PrefModel createFromParcel(Parcel source) {
-            return new PrefModel(source);
-        }
-
-        @Override
-        public PrefModel[] newArray(int size) {
-            return new PrefModel[size];
-        }
-    };
 }

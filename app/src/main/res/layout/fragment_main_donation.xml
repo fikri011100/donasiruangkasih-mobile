@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     android:layout_height="match_parent"
-    tools:context=".fragment.MainDonationFragment">
+    tools:context=".fragment.home.DonationFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_donation"
@@ -24,5 +25,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_not_donation"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/notfound"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:id="@+id/btn_reload_donation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="Reload"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/iv_not_donation"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

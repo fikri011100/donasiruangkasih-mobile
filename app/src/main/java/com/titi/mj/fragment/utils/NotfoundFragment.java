@@ -1,4 +1,4 @@
-package com.titi.mj.fragment;
+package com.titi.mj.fragment.utils;
 
 
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import com.titi.mj.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AddonationFragment extends Fragment {
+public class NotfoundFragment extends Fragment {
 
 
-    public AddonationFragment() {
+    public NotfoundFragment() {
         // Required empty public constructor
     }
 
@@ -26,7 +26,7 @@ public class AddonationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_addonation, container, false);
+        return inflater.inflate(R.layout.fragment_notfound, container, false);
     }
 
 }

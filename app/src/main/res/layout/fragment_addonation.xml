@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.AddonationFragment">
+    tools:context=".fragment.mydonation.AddonationFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -25,7 +25,9 @@
             android:paddingRight="10dp"
             android:paddingBottom="16dp"
             android:paddingTop="16dp">
+
             <Button
+                android:id="@+id/btn_image_donation"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginRight="4dp"
@@ -79,10 +81,10 @@
                 app:layout_constraintTop_toBottomOf="@id/et_image_donation" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/iv_deadline_donation"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginRight="8dp"
-
                 android:src="@drawable/ic_date_range_black_24dp"
                 app:layout_constraintBottom_toTopOf="@+id/sp_category_donation"
                 app:layout_constraintRight_toRightOf="parent"
@@ -160,6 +162,7 @@
     </androidx.cardview.widget.CardView>
 
     <Button
+        android:id="@+id/btn_make_donation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"

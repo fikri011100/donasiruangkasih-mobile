@@ -1,4 +1,4 @@
-package com.titi.mj.fragment;
+package com.titi.mj.fragment.profile;
 
 
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -17,11 +18,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.titi.mj.BuildConfig;
 import com.titi.mj.R;
-import com.titi.mj.activity.MainActivity;
+import com.titi.mj.activity.CoverActivity;
 import com.titi.mj.model.locale.PrefModel;
 import com.titi.mj.utils.SharedPref;
+
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -58,6 +63,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         pref = new SharedPref(getContext());
         model = pref.getPreferences();
@@ -132,6 +138,7 @@ public class ProfileFragment extends Fragment {
         mEdtEmail.setText(model.getEmail());
         mEdtPhoneno.setText(model.getPhoneno());
         mEdtPassword.setText(model.getPassword());
+        Glide.with(getContext()).load(BuildConfig.HST + "image/" + model.getPhoto()).into(mImgProfile);
     }
 
     private void enablePersonalEdit() {
@@ -180,7 +187,7 @@ public class ProfileFragment extends Fragment {
             return;
         }
 
-        if (fullname.equals(model.getFullname()) && email.equals(model.getEmail())){
+        if (fullname.equals(model.getFullname()) && email.equals(model.getEmail())) {
             disableEditPersonal();
             return;
         }
@@ -213,14 +220,14 @@ public class ProfileFragment extends Fragment {
             return;
         }
 
-        if (!password.equals(model.getPassword())){
+        if (!password.equals(model.getPassword())) {
             Toast.makeText(getContext(), "Your current password is wrong", Toast.LENGTH_SHORT).show();
             mEdtPassword.setText("");
             mEdtPassword.requestFocus();
             return;
         }
 
-        if (!confirm_password.equals(new_password)){
+        if (!confirm_password.equals(new_password)) {
             mEdtNewPassword.setText("");
             mEdtConfirmPassword.setText("");
             mEdtNewPassword.requestFocus();
@@ -228,7 +235,7 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getContext(), FIELD_NOT_SAME, Toast.LENGTH_SHORT).show();
         }
 
-        if (new_password.equals(model.getPassword())){
+        if (new_password.equals(model.getPassword())) {
             disablePasswordEdit();
             return;
         }
@@ -264,11 +271,11 @@ public class ProfileFragment extends Fragment {
 
     private void doLogout() {
         SharedPref.clearPreferences();
-        startActivity(new Intent(getContext(), MainActivity.class));
-        getActivity().finish();
+        startActivity(new Intent(getContext(), CoverActivity.class));
+        Objects.requireNonNull(getActivity()).finish();
     }
 
-    private void saveUser(String email, String password, String fullname, boolean status){
+    private void saveUser(String email, String password, String fullname, boolean status) {
         model.setEmail(email);
         model.setPassword(password);
         model.setFullname(fullname);

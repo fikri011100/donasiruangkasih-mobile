@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".fragment.home.CountDonateFragment">
+
+    <TextView
+        android:id="@+id/tv_dummy_donate_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Insert Nominal"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_nominal_donate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit_text"
+        android:hint="Rp. 000,00"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dummy_donate_1" />
+
+    <TextView
+        android:id="@+id/tv_dummy_donate_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Select payment method"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nominal_donate" />
+
+    <RadioGroup
+        android:id="@+id/rg_payment_donate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:padding="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dummy_donate_2">
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_mobile_bca"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_radio_button"-->
+<!--            android:drawableRight="@drawable/ic_account_circle_black_24dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:text="Mobile Banking BCA" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_atm_bca"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_radio_button"-->
+<!--            android:drawableRight="@drawable/ic_account_circle_black_24dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:text="Transfer ATM BCA" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_mobile_mandiri"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_radio_button"-->
+<!--            android:drawableRight="@drawable/ic_account_circle_black_24dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:text="Mobile Banking Mandiri" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_atm_mandiri"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_radio_button"-->
+<!--            android:drawableRight="@drawable/ic_account_circle_black_24dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:text="ATM Transfer mandiri" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rb_mobile_bni"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_radio_button"-->
+<!--            android:drawableRight="@drawable/ic_account_circle_black_24dp"-->
+<!--            android:paddingLeft="10dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="10dp"-->
+<!--            android:paddingBottom="16dp"-->
+<!--            android:text="Mobile Banking BNI" />-->
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_dummy_donate_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Insert Code Referal"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rg_payment_donate" />
+
+    <EditText
+        android:id="@+id/et_referal_donate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edit_text"
+        android:hint="XXX-XXX-XXX (OPTIONAL)"
+        android:inputType="numberDecimal"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dummy_donate_3" />
+
+    <Button
+        android:id="@+id/btn_donation_donate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/bg_button"
+        android:text="Send Your Donation"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
